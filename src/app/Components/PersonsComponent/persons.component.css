@@ -1,0 +1,7 @@
+.person-block{
+	border: 1px solid black;
+	margin: 20px;
+	display: inline-block;
+	width: 200px;
+	height: 100px;
+}

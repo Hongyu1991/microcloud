@@ -1,0 +1,27 @@
+<div id='persons'>
+	this is persons part.
+	<div id='person-list'>
+		<a *ngFor="let person of persons" class='person-block'>
+			<div>
+				<div>Name: {{person.firstname}}</div>
+				<div>ID: {{person.id}}</div>
+				<!-- {{person.address}} -->
+				<button class="delete" (click)="delete(person)">Delete</button>
+			</div>
+		</a>
+	</div>
+
+
+	<div>
+	  <p>New Person: </p>
+	  <label>Name:</label> <input #personName />
+	  <label>Address: </label> <input #personAddress />
+	  <button (click)="add(personName.value); personName.value=''">
+	    Add
+	  </button>
+
+	  <person-form></person-form>
+	</div>
+
+
+</div>

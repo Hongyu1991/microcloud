@@ -1,0 +1,53 @@
+
+	<div class="container" id="sidearea">
+		<div class="col-md-10 col-md-offset-1" id="logo">
+<!-- 			<h1>{{name}}</h1> -->
+			<div id="logo-container" align="center">
+				<img src="https://www.mangata.io/public/img/logo.svg" class="img-responsive" id="logo-img"/>
+			</div>
+			<hr id="line1">
+
+		</div>
+		
+		<div id="sidebar" class="col-md-12">
+			<menu>
+				<!-- current page = orders -->
+				
+				<a routerLink="/layout/orders" routerLinkActive="is-active" class="menu-btn">
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					Orders
+				</a>
+
+				<a routerLink="/layout/products" routerLinkActive="is-active" class="menu-btn">
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					Products</a>
+				<a routerLink="/layout/policy" routerLinkActive="is-active" class="menu-btn">
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					Policy Management</a>
+				<a routerLink="/layout/settings" routerLinkActive="is-active" class="menu-btn">
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					Settings</a>
+				<a routerLink="/layout/support" routerLinkActive="is-active" class="menu-btn">
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					Support</a>
+			</menu>
+
+			<div id="about">
+				<p>About</p>
+				<hr width="100" id="line2">
+			</div>
+		</div>
+
+
+		<div id="company" class="col-md-9">
+			<div>
+				<i class="fa fa-5x  fa-user-circle-o" aria-hidden="true"></i>
+			</div>
+			<p> Company Name</p>
+		</div>
+	</div>
+
+
+	<div id="main-board">
+		<router-outlet></router-outlet>
+	</div>

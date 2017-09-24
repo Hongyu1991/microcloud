@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{title}}
+  </h1>
+</div>
+
+
+<div id="options"> 
+  <menu>
+    <a routerLink="/persons" routerLinkActive="is-active" class="menu-btn">
+      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+      Persons
+    </a>
+    <a routerLink="/addresses" routerLinkActive="is-active" class="menu-btn">
+      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+      Addresses
+    </a>
+
+  </menu>
+
+</div> 
+
+<router-outlet></router-outlet>

@@ -1,0 +1,23 @@
+<div  class="container">
+    <h1>Person Form</h1>
+    {{diagnostic}}
+    <form (ngSubmit)="onSubmit()" #personForm="ngForm">
+      <div class="form-group">
+        <label for="name">FirstName</label>
+        <input type="text" class="form-control" id="firstname" required [(ngModel)]="model.firstname" name="firstname">
+      </div>
+
+      <div class="form-group">
+        <label for="name">LastName</label>
+        <input type="text" class="form-control" id="lastname" required [(ngModel)]="model.lastname" name="lastname">
+      </div>
+ 
+<!--       <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo">
+      </div> -->
+ 
+      <button type="submit" class="btn btn-success">Submit</button>
+ 
+    </form>
+</div>
