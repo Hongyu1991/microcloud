@@ -27,12 +27,16 @@ export class PersonService {
   			.catch(this.handleError);
   }
 
-  addPerson(person: Person): Promise<void> {
+  addPerson(person: Person): Promise<Person> {
+    console.log("inside addPerson");
     return this.http.post(this.personsUrl, JSON.stringify(person), {headers: this.headers})
         .toPromise()
-        .then(() => person)
+        .then((response) => {
+          console.log("in person service");
+          console.log(response);
+          //response.json() as Person
+        })
         .catch(this.handleError);
-
   }
 
 

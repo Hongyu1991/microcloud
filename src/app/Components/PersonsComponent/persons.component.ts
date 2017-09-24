@@ -26,13 +26,24 @@ export class PersonsComponent implements OnInit{
 	}
 
 
-	  delete(person: Person): void {
-	    this.personService
-	        .delete(person.id)
-	        .then(() => {
-	          this.persons = this.persons.filter(h => h !== person);
-	        });
-	  }
+	delete(person: Person): void {
+		this.personService
+		    .delete(person.id)
+		    .then(() => {
+		      this.persons = this.persons.filter(h => h !== person);
+		    });
+	}
+
+
+	addPerson(person){
+		console.log("inside parent test");
+		console.log(person);
+		this.personService
+			.addPerson(person)
+			.then(() => {
+				this.persons.push(person);
+			});
+	}
 
 
 	getPersons() {

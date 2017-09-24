@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { Person }    from './person';
 
@@ -13,23 +13,37 @@ export class PersonFormComponent {
 
 	constructor(private personService: PersonService) { }
 
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
 
-  model = new Person(0, 'Dr IQ', 'En', 'Chuck Overstreet');
+	powers = ['Really Smart', 'Super Flexible',
+	        'Super Hot', 'Weather Changer'];
 
-  submitted = false;
+	model = new Person(0, 'Dr IQ', 'En', 'Chuck Overstreet');
 
-  onSubmit() { 
-  	this.submitted = true;
-  	console.log("submit here");
-  	//TODO: submit the data to the backend
+	submitted = false;
 
-  	this.personService.addPerson(this.model)
-  		.then(() => null);
+	onSubmit() { 
+		this.submitted = true;
+		console.log("submit here");
+		//TODO: submit the data to the backend
 
-  }
+		// this.personService.addPerson(this.model)
+		// 	.then(() => null);
+		this.addPerson();
 
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+	}
+
+	// TODO: Remove this when we're done
+	get diagnostic() { return JSON.stringify(this.model); }
+
+
+	@Output() childEvent = new EventEmitter();
+	addPerson(){
+		console.log("child test");
+		this.childEvent.emit(this.model);
+
+	}
+
+
+
+
 }
