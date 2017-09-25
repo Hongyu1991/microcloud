@@ -1,22 +1,38 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 import { Person } from './Components/PersonsComponent/person';
+import {Address} from './Components/AddressesComponent/address'
 
 @Injectable()
 export class PersonService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private personsUrl = 'api/persons';  // URL to web api
+  private personsEndpoint = 'http://13.59.69.184:8080/person';
+
+  private addressUrl = 'http://addresses-env.xmyup6ek3p.us-east-2.elasticbeanstalk.com/address';
 
   constructor(private http: Http) { }
 
   getPersons(): Promise<Person[]> {
-    return this.http.get(this.personsUrl)
+    return this.http.get(this.personsUrl, {headers: this.headers})
                .toPromise()
                .then(response => response.json().data as Person[])
                .catch(this.handleError);
+  }
+
+  getAddresses(): Observable<Address[]> {
+    // return this.http.get(this.addressUrl)
+    //   .toPromise()
+    //   .then(response => response.json().data as Address[])
+    //   .catch(this.handleError);
+    return this.http.get(this.addressUrl)
+      .map((res:Response) => res.json().data as Address[]);
   }
 
   getPerson(id: number): Promise<Person> {
