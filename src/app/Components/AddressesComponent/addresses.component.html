@@ -2,6 +2,8 @@
 	this is addresses's part
 
 	<div id='address-list'>
+		<button (click)="prevPage()">Previous</button>
+		<button (click)="nextPage()">Next</button>
 		<a *ngFor="let address of addresses" class='address-block'>
 			<div>
 				<h3>Address</h3>
@@ -17,6 +19,8 @@
 
 
 
+
+	  <address-form (childEvent)="addAddress($event)"></address-form>
 
 
 </div>

@@ -18,6 +18,11 @@ export class PersonsComponent implements OnInit{
 
 	addresses: Address[] = [];
 
+	searchterm = {
+		'firstname':'Chester',
+		'lastname':'Yang'
+	};
+
 	ngOnInit(): void {
 		this.personService.getPersons()
 	  	.then(persons => this.persons = persons);
@@ -35,6 +40,10 @@ export class PersonsComponent implements OnInit{
 			.then(() => {
 				this.persons = this.persons.filter(h => h !== person);
 			});
+	}
+
+	searchByTerm(): void {
+		console.log(this.searchterm);
 	}
 
 	addPerson(person){

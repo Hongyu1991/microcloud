@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { Address} from './address';
 import { AddressService } from '../../address.service';
 import { HttpClient } from '@angular/common/http';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, URLSearchParams } from '@angular/http';
 
 
 @Component({
@@ -15,52 +15,63 @@ import { Headers, Http } from '@angular/http';
 export class AddressesComponent {
 
 	constructor(
-		private addressService: AddressService, 
-		private httpClient: HttpClient,
-		private http: Http
+		private addressService: AddressService
 	) {}
 
-	
-	private addressUrl = 'http://addresses-env.xmyup6ek3p.us-east-2.elasticbeanstalk.com/address';
 	addresses: Address[] = [];
-	results = [];
-	profile = [];
+
+	pages = [0];
+	page_cursor : number;
+	page_length : number;
+
+	params: URLSearchParams = new URLSearchParams();
+	// params.set('offset', offset.toString());
+
 	ngOnInit(): void {
-		//this.addressService.test();
-		console.log("add");
-		//console.log(this.http.get(this.addressUrl));
-		
-		this.addressService
-		.test()
-		.subscribe((data) => {this.addresses = data
-			console.log(this.addresses);
-		},
-			error => () => {console.log("err")}
-		);
 
-		//console.log(this.addresses);
-
-		//this.addressService.getAllPersons();
-
-
-        // this.addressService.getUsers()
-        //     .subscribe(
-        //         users => {
-        //             this.addresses = users;
-        //             //console.log('this.users=' + this.addresses);
-        //         }, //Bind to view
-        //         err => {
-        //                 // Log errors if any
-        //                 console.log("i am here" + err);
-        //     	});
-
-		//.subscribe(data => {
-			// Read the result field from the JSON response.
-			//this.results = data['results'];
-			// console.log("data");
-		//});
+		this.getAddresses(0);
 	}
 
+
+	getAddresses(offset: number): void {
+		if (offset < 0) {
+			offset = 0;
+		}
+		this.page_cursor = offset;
+		this.params.set('offset', offset.toString());
+		this.addressService
+		.getAddressesOffset(this.params)
+		.subscribe((data) => {this.addresses = data;
+			this.page_length = this.addresses.length;
+			console.log(this.addresses);
+			},
+			error => () => {console.log("err")}
+		);
+	}
+
+	nextPage() : void {
+		if (this.page_length < 10) {
+			return;
+		} else {
+			this.getAddresses(this.page_cursor + 10);
+		}
+	}
+
+	prevPage() : void {
+		if (this.page_cursor <= 0) {
+			return;
+		} else {
+			this.getAddresses(this.page_cursor - 10);
+		}
+
+	}
+
+
+	addAddress(address) {
+		//call service function
+		this.addressService
+			.addAddress(address);
+	}
 
 
 

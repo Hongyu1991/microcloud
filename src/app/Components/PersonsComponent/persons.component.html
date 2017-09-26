@@ -1,5 +1,14 @@
 <div id='persons'>
 	this is persons part.
+	<div id='search-person'>
+		<p>Search By:<br>
+			<label for='firstname'>FirstName</label>
+			<input type="text" class="form-control" id="firstname" required [(ngModel)]="searchterm.firstname" name="firstname">
+			<label for='lastname'>LastName</label>
+			<input type="text" class="form-control" id="lastname" required [(ngModel)]="searchterm.lastname" name="lastname">
+		</p>
+	<button class="btn btn-success" (click)="searchByTerm()">Search</button>
+	</div>
 	<div id='person-list'>
 		<a *ngFor="let person of persons" class='person-block'>
 			<div>

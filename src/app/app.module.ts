@@ -8,7 +8,7 @@ import { AppComponent } from './Components/AppComponent/app.component';
 import { PersonsComponent } from './Components/PersonsComponent/persons.component';
 import { AddressesComponent } from './Components/AddressesComponent/addresses.component';
 import { PersonFormComponent } from './Components/PersonsComponent/person-form.component';
-
+import { AddressFormComponent } from './Components/AddressesComponent/address-form.component';
 import { AppRoutingModule }  from './Modules/AppRoutingModule/app-routing.module';
 
 import { PersonService }          from './person.service';
@@ -22,7 +22,8 @@ import { AddressService } from './address.service';
     AppComponent,
     PersonsComponent,
     AddressesComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
