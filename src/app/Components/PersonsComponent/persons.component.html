@@ -5,8 +5,13 @@
 			<div>
 				<div>Name: {{person.firstname}}</div>
 				<div>ID: {{person.id}}</div>
+				<div>Street: {{person.address.address}}</div>
+				<div>Zip: {{person.address.zip}}</div>
+				<div>State: {{person.address.state}}</div>
+				<div>Country: {{person.address.country}}</div>
 				<!-- {{person.address}} -->
 				<button class="delete" (click)="delete(person)">Delete</button>
+				<button>Update</button>
 			</div>
 		</a>
 	</div>

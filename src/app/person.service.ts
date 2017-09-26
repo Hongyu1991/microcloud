@@ -13,7 +13,7 @@ import {Address} from './Components/AddressesComponent/address'
 export class PersonService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private personsUrl = 'api/persons';  // URL to web api
-  private personsEndpoint = 'http://13.59.69.184:8080/person';
+  private personsEndpoint = 'http://persons-env.xmyup6ek3p.us-east-2.elasticbeanstalk.com/person';
 
   private addressUrl = 'http://addresses-env.xmyup6ek3p.us-east-2.elasticbeanstalk.com/address';
 

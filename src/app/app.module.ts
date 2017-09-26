@@ -13,8 +13,8 @@ import { AppRoutingModule }  from './Modules/AppRoutingModule/app-routing.module
 
 import { PersonService }          from './person.service';
 import { AddressService } from './address.service';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService }  from './in-memory-data.service';
 
 
 @NgModule({
@@ -29,8 +29,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpModule
+    //InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [ PersonService, AddressService ],
   bootstrap: [AppComponent]
