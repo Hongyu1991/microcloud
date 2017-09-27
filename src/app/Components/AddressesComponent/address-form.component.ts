@@ -14,7 +14,7 @@ import { AddressService } from '../../address.service';
 export class AddressFormComponent {
 	constructor(private addressService: AddressService) { }
 
-	address = new Address("0", "NY", 10025, "116 street", "USA");
+	address = new Address("0", "NY", "10025", "116 street", "USA", "New York");
 
 	submitted = false;
 

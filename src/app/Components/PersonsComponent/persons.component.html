@@ -2,18 +2,21 @@
 	this is persons part.
 	<div id='search-person'>
 		<p>Search By:<br>
-			<label for='firstname'>FirstName</label>
-			<input type="text" class="form-control" id="firstname" required [(ngModel)]="searchterm.firstname" name="firstname">
-			<label for='lastname'>LastName</label>
-			<input type="text" class="form-control" id="lastname" required [(ngModel)]="searchterm.lastname" name="lastname">
+			<label for='first_name'>FirstName</label>
+			<input type="text" class="form-control" id="first_name" required [(ngModel)]="searchterm.first_name" name="first_name">
+			<label for='last_name'>LastName</label>
+			<input type="text" class="form-control" id="last_name" required [(ngModel)]="searchterm.last_name" name="last_name">
 		</p>
 	<button class="btn btn-success" (click)="searchByTerm()">Search</button>
 	</div>
 	<div id='person-list'>
+		<button (click)="prevPage()">Previous</button>
+		<button (click)="nextPage()">Next</button>
+		<br>
 		<a *ngFor="let person of persons" class='person-block'>
 			<div>
-				<div>Name: {{person.firstname}}</div>
-				<div>ID: {{person.id}}</div>
+				<div>FirstName: {{person.first_name}}</div>
+				<div>LastName: {{person.last_name}}</div>
 				<div>Street: {{person.address.address}}</div>
 				<div>Zip: {{person.address.zip}}</div>
 				<div>State: {{person.address.state}}</div>

@@ -22,9 +22,9 @@ export class PersonFormComponent {
 	// "country": "USA", 
 	// "zip": "99999", 
 	// "address": "123 1st Avenue"
-	address = new Address("1", "NY", 10025, "116 street", "USA");
+	address = new Address("", "NY", "10025", "116 street", "USA", "New York");
 
-	model = new Person(0, 'Chester', 'Yang', this.address);
+	model = new Person('', 'Chester', 'Yang', this.address, 'url');
 
 	submitted = false;
 

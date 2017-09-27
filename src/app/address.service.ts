@@ -1,5 +1,5 @@
 import { Injectable, OnInit }    from '@angular/core';
-import { Headers, Http, Response, URLSearchParams } from '@angular/http';
+import { Headers, Http, Response, URLSearchParams, RequestOptions } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
@@ -18,9 +18,14 @@ export class AddressService implements OnInit {
 
 	results: string[];
 
-	private addressUrl = 'http://addresses-env.xmyup6ek3p.us-east-2.elasticbeanstalk.com/address';
+	//private addressUrl = '13.59.69.184:8081/address';
+	private addressUrl = 'http://addressesv2-env.us-east-2.elasticbeanstalk.com/address';
 	//private headers = new Headers({'Access-Control-Allow-Origin': '*'});
+	
 	private headers = new Headers({'Content-Type': 'application/json'});
+	options: RequestOptions;
+
+
 	ngOnInit(): void {
 	// Make the HTTP request:
 		// this.http.get(this.addressUrl).subscribe(data => {
@@ -28,6 +33,7 @@ export class AddressService implements OnInit {
 		// 	this.results = data['results'];
 		// 	console.log(data);
 		// });
+		this.options = new RequestOptions({ headers: this.headers });
 	}
 
 	// getAddresses(): Observable <any> {
@@ -45,10 +51,31 @@ export class AddressService implements OnInit {
 
 	addAddress(address: Address) : Observable <any> {
 		console.log(JSON.stringify(address));
-		return this.http.post(this.addressUrl, JSON.stringify(address), {headers: this.headers});
+		return this.http.post(this.addressUrl, JSON.stringify(address), this.options);
 	}
 
+	getAddressById(id: string) : Observable<any> {
+		return this.http.get(this.addressUrl + '/' + id)
+			.map((response: Response) => response.json());
+	}
 
+	getAddressByUrl(url: string) : Observable<any> {
+		return this.http.get(url)
+			.map((response: Response) => response.json());
+	}
+
+	deleteAddressById(id: string) : Observable<any> {
+		const url = this.addressUrl + '/' + id;
+		console.log(url);
+		return this.http.delete(url, this.options)
+			.map((res) => {res.json()});
+			//.catch();
+	}
+
+	// deleteAddress(a_id: string) {
+	// 	const url = `${this.personsUrl}/${id}`
+	// 	return this.http.delete()
+	// }
 
 
 

@@ -7,9 +7,10 @@ export class Person {
 	// Address: Address;
 
 	constructor(
-	    public id: number,
-	    public firstname: string,
-	    public lastname: string,
-	    public address: Address
+	    public p_id: string,
+	    public first_name: string,
+	    public last_name: string,
+	    public address: Address,
+	    public address_url: string
   	) {  }
 }

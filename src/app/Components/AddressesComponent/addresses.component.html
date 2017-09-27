@@ -1,6 +1,24 @@
 <div id='addresses'>
 	this is addresses's part
 
+	<div id='search-person'>
+		<p>Search By:<br>
+			<label for='address'>Street</label>
+			<input type="text" class="form-control" id="address" required [(ngModel)]="searchterm.address" name="address">
+
+			<label for='state'>State</label>
+			<input type="text" class="form-control" id="state" required [(ngModel)]="searchterm.state" name="state">
+
+			<label for='zip'>ZIP</label>
+			<input type="text" class="form-control" id="zip" required [(ngModel)]="searchterm.zip" name="zip">
+
+			<label for='country'>Country</label>
+			<input type="text" class="form-control" id="country" required [(ngModel)]="searchterm.country" name="country">
+		</p>
+	<button class="btn btn-success" (click)="searchByTerm()">Search</button>
+	</div>
+
+
 	<div id='address-list'>
 		<button (click)="prevPage()">Previous</button>
 		<button (click)="nextPage()">Next</button>
@@ -11,7 +29,7 @@
 				<div>ZIP: {{address.zip}}</div>
 				<div>State: {{address.state}}</div>
 				<div>Country: {{address.country}}</div>
-
+				<button class="delete" (click)="delete(address)">delete</button>
 			</div>
 		</a>
 	</div>
