@@ -6,6 +6,9 @@
 			<label for='address'>Street</label>
 			<input type="text" class="form-control" id="address" required [(ngModel)]="searchterm.address" name="address">
 
+			<label for='city'>City</label>
+			<input type="text" class="form-control" id="city" required [(ngModel)]="searchterm.city" name="city">
+
 			<label for='state'>State</label>
 			<input type="text" class="form-control" id="state" required [(ngModel)]="searchterm.state" name="state">
 
@@ -25,11 +28,30 @@
 		<a *ngFor="let address of addresses" class='address-block'>
 			<div>
 				<h3>Address</h3>
-				<div>Street: {{address.address}}</div>
-				<div>ZIP: {{address.zip}}</div>
-				<div>State: {{address.state}}</div>
-				<div>Country: {{address.country}}</div>
+
+				<div>
+					<label for='address'>Street:</label>
+					<input type="text" [(ngModel)]="address.address">
+				</div>
+
+				<div>
+					<label for='city'>City:</label>
+					<input type="text" [(ngModel)]="address.city">
+				</div>
+				<div>
+					<label for='zip'>ZIP:</label>
+					<input type="text" [(ngModel)]="address.zip">
+				</div>
+				<div>
+					<label for='state'>State:</label>
+					<input type="text" [(ngModel)]="address.state">
+				</div>
+				<div>
+					<label for='country'>Country:</label>
+					<input type="text" [(ngModel)]="address.country">
+				</div>
 				<button class="delete" (click)="delete(address)">delete</button>
+				<button class="update" (click)="update(address)">update</button>
 			</div>
 		</a>
 	</div>

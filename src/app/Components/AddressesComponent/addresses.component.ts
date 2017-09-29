@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { Address} from './address';
 import { AddressService } from '../../address.service';
 import { HttpClient } from '@angular/common/http';
-import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Headers, Http, URLSearchParams, Response } from '@angular/http';
 import * as angular from "angular";
 
 @Component({
@@ -116,7 +116,9 @@ export class AddressesComponent {
 		console.log(address);
 		this.addressService
 			.addAddress(address)
-			.subscribe((data) => {console.log(data)});
+			.subscribe((data) => {
+				console.log(data._body);
+			});
 	}
 
 	delete(address: Address) {
@@ -132,6 +134,13 @@ export class AddressesComponent {
 			// .toPromise(){
 			// 	this.addresses = this.addresses.filter(h => h !== address)
 			// };
+	}
+
+	update(address: Address) {
+		console.log(address);
+		this.addressService
+			.updateAddress(address)
+			.subscribe();
 	}
 
 

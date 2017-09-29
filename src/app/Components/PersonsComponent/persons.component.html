@@ -15,7 +15,12 @@
 		<br>
 		<a *ngFor="let person of persons" class='person-block'>
 			<div>
-				<div>FirstName: {{person.first_name}}</div>
+				<div>
+					<label for='first_name'>FirstName:</label>
+					<input type="text" [(ngModel)]="person.first_name">
+				</div>
+
+
 				<div>LastName: {{person.last_name}}</div>
 				<div>Street: {{person.address.address}}</div>
 				<div>Zip: {{person.address.zip}}</div>
@@ -23,7 +28,7 @@
 				<div>Country: {{person.address.country}}</div>
 				<!-- {{person.address}} -->
 				<button class="delete" (click)="delete(person)">Delete</button>
-				<button>Update</button>
+				<button (click)="update(person)">Update</button>
 			</div>
 		</a>
 	</div>

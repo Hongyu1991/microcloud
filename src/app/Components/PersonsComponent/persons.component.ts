@@ -57,10 +57,11 @@ export class PersonsComponent implements OnInit{
 		//this.params.set('zip', '777777');
 		this.personService
 		.getPersonsParams(this.params)
-		.subscribe((data) => {this.persons = data;
+		.subscribe((data) => {
+			this.persons = data;
 			this.getPersonAddress();
 			this.page_length = this.persons.length;
-			console.log(this.persons);
+			//console.log(this.persons);
 			},
 			error => () => {console.log("err")}
 		);
@@ -68,13 +69,22 @@ export class PersonsComponent implements OnInit{
 
 	getPersonAddress() : void {
 		for (var i = 0; i < this.persons.length; i++) {
-			console.log(this.persons[i].first_name);
+			//console.log(this.persons[i].first_name);
 			//persons[i].address = 
+			const index = i;
 			this.addressService
 				.getAddressByUrl(this.persons[i].address_url)
 				.subscribe((data) => {
-					//this.persons[i].address = this.sampleAddress;
-					console.log(data)});
+					//console.log(data.a_id);
+					//console.log(this.persons[index]);
+					this.persons[index].address = data;
+					//this.persons[i].address.a_id = data.a_id;
+					// this.persons[i].address.state = data.state;
+					// this.persons[i].address.zip = data.zip;
+					// this.persons[i].address.address = data.address;
+					// this.persons[i].address.country = data.country;
+					// this.persons[i].address.city = data.city;
+					});
 		this.persons[i].address = this.sampleAddress;
 		}
 	}
@@ -94,7 +104,6 @@ export class PersonsComponent implements OnInit{
 			this.getPersons(this.page_cursor - 10);
 		}
 	}
-
 
 
 
@@ -127,10 +136,13 @@ export class PersonsComponent implements OnInit{
 		console.log("inside parent test");
 		console.log(person);
 		this.personService
-			.addPerson(person)
-			.then(() => {
-				//this.persons.push(person);
-			});
+			.addPerson(person);
+	}
+
+	update(person: Person) {
+		this.personService
+		.updatePerson(person);
+		//.subscribe();
 	}
 
 

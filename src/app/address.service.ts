@@ -27,12 +27,6 @@ export class AddressService implements OnInit {
 
 
 	ngOnInit(): void {
-	// Make the HTTP request:
-		// this.http.get(this.addressUrl).subscribe(data => {
-		// 	// Read the result field from the JSON response.
-		// 	this.results = data['results'];
-		// 	console.log(data);
-		// });
 		this.options = new RequestOptions({ headers: this.headers });
 	}
 
@@ -50,8 +44,15 @@ export class AddressService implements OnInit {
 	}
 
 	addAddress(address: Address) : Observable <any> {
-		console.log(JSON.stringify(address));
+		//console.log(JSON.stringify(address));
 		return this.http.post(this.addressUrl, JSON.stringify(address), this.options);
+	}
+
+	updateAddress(address: Address) : Observable <any> {
+		//console.log(JSON.stringify(address));
+		const url = this.addressUrl + '/' + address.a_id;
+		//delete address.a_id;
+		return this.http.put(url, JSON.stringify(address), this.options);
 	}
 
 	getAddressById(id: string) : Observable<any> {
